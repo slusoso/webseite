@@ -4,8 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Work — Selou Sowe</title>
-  <meta name="description" content="Digital video work by Selou Sowe — found footage, 3D animation, essay film.">
+  <meta name="description" content="Digital video art by Selou Sowe. Found footage, 3D animation, and AI-generated images in essay films exploring white supremacy, power, and the complexity of nature.">
+  <link rel="canonical" href="https://selousowe.com/digitalwork.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://selousowe.com/digitalwork.html">
+  <meta property="og:site_name" content="Selou Sowe">
+  <meta property="og:title" content="Digital Work — Selou Sowe">
+  <meta property="og:description" content="Digital video art by Selou Sowe. Found footage, 3D animation, and AI-generated images in essay films exploring white supremacy, power, and the complexity of nature.">
+  <meta property="og:image" content="https://selousowe.com/dance.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digital Work — Selou Sowe">
+  <meta name="twitter:description" content="Digital video art by Selou Sowe. Found footage, 3D animation, and AI-generated images in essay films exploring white supremacy, power, and the complexity of nature.">
+  <meta name="twitter:image" content="https://selousowe.com/dance.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400&display=swap">
+
   <link rel="stylesheet" href="stylesEM.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "name": "The Melody the Dragon Hums",
+        "description": "18:19 min video work by Selou Sowe. Found footage, self-made 3D animations, AI-generated images. Displayed on 4 × 55″ screens (222 cm × 260 cm). Explores white supremacist ideology, power, and the complexity of nature.",
+        "author": {"@type": "Person", "name": "Selou Sowe", "url": "https://selousowe.com"},
+        "dateCreated": "2022",
+        "datePublished": "2024",
+        "url": "https://www.youtube.com/watch?v=XO3ANBqqZ2Q",
+        "embedUrl": "https://www.youtube.com/embed/XO3ANBqqZ2Q",
+        "thumbnailUrl": "https://selousowe.com/dance.jpg"
+      },
+      {
+        "@type": "VideoObject",
+        "name": "An Anatomie of Form and Function",
+        "description": "18 min essay film by Selou Sowe. Found footage and self-made 3D animations exploring similarities between man-made systems and natural structures, and the question of whether decentralised technologies could dismantle hardened power structures.",
+        "author": {"@type": "Person", "name": "Selou Sowe", "url": "https://selousowe.com"},
+        "dateCreated": "2022",
+        "url": "https://www.youtube.com/watch?v=QeRvMIOtBOA",
+        "embedUrl": "https://www.youtube.com/embed/QeRvMIOtBOA",
+        "thumbnailUrl": "https://selousowe.com/roman.jpg"
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="digital-page">
 
@@ -26,8 +77,8 @@
       <div class="work-cover" role="button" tabindex="0" aria-expanded="false">
         <figure class="work-cover-figure">
           <div class="gif-overlay-wrap">
-            <img src="dance.jpg" alt="The Melody the Dragon Hums — video still, Selou Sowe">
-            <img class="gif-float" src="speaker.gif" alt="Speaker animation">
+            <img src="dance.jpg" alt="The Melody the Dragon Hums — video still, Selou Sowe" fetchpriority="high" decoding="async">
+            <img class="gif-float" src="speaker.gif" alt="Speaker animation" decoding="async">
           </div>
         </figure>
         <div class="work-cover-bar">
@@ -52,10 +103,10 @@
 
             As the knight charges at the dragon, lance aimed at her chest, the dragon, ancient beyond measure, hums an age-old melody. She knows full well that the frightened little man in his shiny armor is just a tiny part of herself, part of the eternal cycle of fragmentation, assembly, and emergence.</p>
           <div class="video-wrap">
-            <iframe id="video-iframe" src="https://www.youtube.com/embed/XO3ANBqqZ2Q?si=VYG37ZPhj9Fd0bLq" title="The Melody the Dragon Hums" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="video-iframe" src="https://www.youtube.com/embed/XO3ANBqqZ2Q?si=VYG37ZPhj9Fd0bLq" title="The Melody the Dragon Hums" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="work-image">
-            <img src="dragon.png" alt="The Melody the Dragon Hums — still, Selou Sowe">
+            <img src="dragon.png" alt="The Melody the Dragon Hums — still, Selou Sowe" loading="lazy" decoding="async">
           </div>
           <button class="work-close-btn" aria-label="Close section">click to close</button>
         </div>
@@ -67,8 +118,8 @@
       <div class="work-cover" role="button" tabindex="0" aria-expanded="false">
         <figure class="work-cover-figure">
           <div class="gif-overlay-wrap">
-            <img src="roman.jpg" alt="An Anatomie of Form and Function — video still, Selou Sowe">
-            <img class="gif-float" src="evalo.gif" alt="Evalo animation">
+            <img src="roman.jpg" alt="An Anatomie of Form and Function — video still, Selou Sowe" loading="lazy" decoding="async">
+            <img class="gif-float" src="evalo.gif" alt="Evalo animation" loading="lazy" decoding="async">
           </div>
         </figure>
         <div class="work-cover-bar">
@@ -82,10 +133,10 @@
           <p class="work-caption">18 min. &mdash; found footage and self-made 3D animations</p>
           <p class="work-text">With a view on global connections and informatic achievements, the essay film points out similarities of man-made systems and natural structures, that become more evident with the advance of global connectivity. In found footage images combined with self-made 3D animations, an artificial voice-over raises a question: would the demise of hardened centralised power structures through modern technologies mean our salvation?</p>
           <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/QeRvMIOtBOA" title="An Anatomie of Form and Function" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/QeRvMIOtBOA" title="An Anatomie of Form and Function" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="work-image">
-            <img src="bc.jpg" alt="An Anatomie of Form and Function — still, Selou Sowe">
+            <img src="bc.jpg" alt="An Anatomie of Form and Function — still, Selou Sowe" loading="lazy" decoding="async">
           </div>
           <button class="work-close-btn" aria-label="Close section">click to close</button>
         </div>

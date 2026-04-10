@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400&display=swap');
+/* Google Fonts loaded via <link> tags in HTML for better performance */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -633,6 +633,15 @@ img {
   margin-bottom: 3rem;
 }
 
+.slider-label {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
+}
+
 /* Viewport clips the track; arrows sit on top */
 .slider-wrapper {
   position: relative;
@@ -689,6 +698,23 @@ img {
   height: 52vh;
   object-fit: contain;
   object-position: top center;
+  background: transparent;
+}
+
+/* Solo full-fill: image covers the entire slider window */
+.slide-fill {
+  display: block;
+}
+.slide-fill .slide-figure {
+  width: 100%;
+  margin: 0;
+}
+.slide-fill .slide-figure img {
+  display: block;
+  width: 100%;
+  height: 52vh;
+  object-fit: cover;
+  object-position: center;
   background: transparent;
 }
 
@@ -758,6 +784,16 @@ img {
   font-size: 0.7rem;
   color: var(--muted);
   letter-spacing: 0.08em;
+}
+
+/* SOTGW slider — images match cover width and scale up */
+.sotgw-slider .slide-pair .slide-figure img,
+.sotgw-slider .slide-solo .slide-figure img {
+  height: auto;
+  max-height: 80vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Description — full width, justified */
