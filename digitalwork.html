@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Work — Selou Sowe</title>
+  <meta name="description" content="Digital video work by Selou Sowe — found footage, 3D animation, essay film.">
+  <link rel="stylesheet" href="stylesEM.css">
+</head>
+<body class="digital-page">
+
+  <nav class="site-nav">
+    <a class="home-link" href="index.html">Selou Sowe</a>
+    <ul>
+      <li><a href="physicalwork.html">Physical Work</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="statement.html">Statement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+
+    <!-- The Melody the Dragon Hums -->
+    <section class="work-section">
+      <div class="work-cover" role="button" tabindex="0" aria-expanded="false">
+        <figure class="work-cover-figure">
+          <div class="gif-overlay-wrap">
+            <img src="dance.jpg" alt="The Melody the Dragon Hums — video still, Selou Sowe">
+            <img class="gif-float" src="speaker.gif" alt="Speaker animation">
+          </div>
+        </figure>
+        <div class="work-cover-bar">
+          <span class="work-cover-title">The Melody the Dragon Hums (2022–2024)</span>
+          <span class="work-expand-label">click to expand</span>
+        </div>
+      </div>
+
+      <div class="work-body">
+        <div class="work-body-inner">
+          <p class="work-caption">
+            18:19 min. &mdash; 4 &times; 55&Prime; screens, 222 cm &times; 260 cm &mdash; found footage, self-made 3D animations, AI-generated images<br>
+            <a href="physicalwork.html#tmdh">Part of an installation</a>
+          </p>
+          <p class="work-text">The title references the worn-out fairy tale of the shining knight who slays the evil dragon to achieve glory and honor: the triumph of good and beauty over evil and ugliness. It also evokes the imagery of Archangel Michael casting the dragon out of heaven.
+
+            White supremacist ideology often relies on misinterpretations of the Bible: the creation of the white man in God's image and the mandate to subdue the earth.
+
+            In contrast, the dragon represents the wretched of the earth, the untamed vastness and force of nature, and the feeling of being small and impotent that arises when faced with her might.
+
+            From this sense of impotence arises the desire for superiority and the will to dominate everything that embodies the dragon. To subjugate the infinitely complex nature of life, the subjugator must reduce its complexity and diminish its vitality.
+
+            As the knight charges at the dragon, lance aimed at her chest, the dragon, ancient beyond measure, hums an age-old melody. She knows full well that the frightened little man in his shiny armor is just a tiny part of herself, part of the eternal cycle of fragmentation, assembly, and emergence.</p>
+          <div class="video-wrap">
+            <iframe id="video-iframe" src="https://www.youtube.com/embed/XO3ANBqqZ2Q?si=VYG37ZPhj9Fd0bLq" title="The Melody the Dragon Hums" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="work-image">
+            <img src="dragon.png" alt="The Melody the Dragon Hums — still, Selou Sowe">
+          </div>
+          <button class="work-close-btn" aria-label="Close section">click to close</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- An Anatomie of Form and Function -->
+    <section class="work-section">
+      <div class="work-cover" role="button" tabindex="0" aria-expanded="false">
+        <figure class="work-cover-figure">
+          <div class="gif-overlay-wrap">
+            <img src="roman.jpg" alt="An Anatomie of Form and Function — video still, Selou Sowe">
+            <img class="gif-float" src="evalo.gif" alt="Evalo animation">
+          </div>
+        </figure>
+        <div class="work-cover-bar">
+          <span class="work-cover-title">An Anatomie of Form and Function (2022)</span>
+          <span class="work-expand-label">click to expand</span>
+        </div>
+      </div>
+
+      <div class="work-body">
+        <div class="work-body-inner">
+          <p class="work-caption">18 min. &mdash; found footage and self-made 3D animations</p>
+          <p class="work-text">With a view on global connections and informatic achievements, the essay film points out similarities of man-made systems and natural structures, that become more evident with the advance of global connectivity. In found footage images combined with self-made 3D animations, an artificial voice-over raises a question: would the demise of hardened centralised power structures through modern technologies mean our salvation?</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/QeRvMIOtBOA" title="An Anatomie of Form and Function" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="work-image">
+            <img src="bc.jpg" alt="An Anatomie of Form and Function — still, Selou Sowe">
+          </div>
+          <button class="work-close-btn" aria-label="Close section">click to close</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.querySelectorAll('.work-cover').forEach(cover => {
+      cover.addEventListener('click', () => {
+        const section = cover.closest('.work-section');
+        const isOpen = section.classList.toggle('is-open');
+        cover.setAttribute('aria-expanded', isOpen);
+        const label = cover.querySelector('.work-expand-label');
+        if (label) label.textContent = isOpen ? 'click to close' : 'click to expand';
+      });
+      cover.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cover.click(); }
+      });
+    });
+
+    document.querySelectorAll('.work-close-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const section = btn.closest('.work-section');
+        const nextSection = section.nextElementSibling;
+        const bodyInner = section.querySelector('.work-body-inner');
+        const collapseHeight = bodyInner ? bodyInner.scrollHeight : 0;
+        const navH = document.querySelector('.site-nav')?.offsetHeight || 0;
+        const targetY = nextSection
+          ? nextSection.getBoundingClientRect().top + window.scrollY - collapseHeight - navH
+          : null;
+        const cover = section.querySelector('.work-cover');
+        if (cover) cover.click();
+        if (targetY !== null) window.scrollTo({ top: targetY, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
