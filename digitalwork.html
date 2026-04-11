@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Work — Selou Sowe</title>
-  <meta name="description" content="Digital video art by Selou Sowe. Found footage, 3D animation, and AI-generated images in essay films exploring white supremacy, power, and the complexity of nature.">
+  <meta name="description" content="Digital video art by Selou Sowe.">
   <link rel="canonical" href="https://selousowe.com/digitalwork.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://selousowe.com/digitalwork.html">
   <meta property="og:site_name" content="Selou Sowe">
-  <meta property="og:title" content="Digital Work — Selou Sowe">
-  <meta property="og:description" content="Digital video art by Selou Sowe. Found footage, 3D animation, and AI-generated images in essay films exploring white supremacy, power, and the complexity of nature.">
+  <meta property="og:title" content="Digital video art by Selou Sowe.">
+  <meta property="og:description" content="Digital video art by Selou Sowe.">
   <meta property="og:image" content="https://selousowe.com/dance.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Digital Work — Selou Sowe">
-  <meta name="twitter:description" content="Digital video art by Selou Sowe. Found footage, 3D animation, and AI-generated images in essay films exploring white supremacy, power, and the complexity of nature.">
+  <meta name="twitter:title" content="Digital video art by Selou Sowe.">
+  <meta name="twitter:description" content="Digital video art by Selou Sowe.">
   <meta name="twitter:image" content="https://selousowe.com/dance.jpg">
 
   <!-- Fonts -->
@@ -146,13 +146,19 @@
   </main>
 
   <script>
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const expandLabel = isTouch ? 'tap to expand' : 'click to expand';
+    const closeLabel  = isTouch ? 'tap to close'  : 'click to close';
+
     document.querySelectorAll('.work-cover').forEach(cover => {
+      const label = cover.querySelector('.work-expand-label');
+      if (label) label.textContent = expandLabel;
+
       cover.addEventListener('click', () => {
         const section = cover.closest('.work-section');
         const isOpen = section.classList.toggle('is-open');
         cover.setAttribute('aria-expanded', isOpen);
-        const label = cover.querySelector('.work-expand-label');
-        if (label) label.textContent = isOpen ? 'click to close' : 'click to expand';
+        if (label) label.textContent = isOpen ? closeLabel : expandLabel;
       });
       cover.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cover.click(); }

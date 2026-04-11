@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reisetagebuch I — Selou Sowe</title>
-  <meta name="description" content="Reisetagebuch I by Selou Sowe — a 3922 km bicycle journey from Córdoba, Argentina to La Paz, Bolivia (2019). Essay and photographs published 2021, exploring control, complexity, and indigenous Andean thought.">
+  <meta name="description" content="Reisetagebuch I by Selou Sowe. A 3922 km bicycle journey from Córdoba, Argentina to La Paz, Bolivia (2019). Essay and photographs published 2021.">
   <link rel="canonical" href="https://selousowe.com/project.html">
 
   <!-- Open Graph -->
@@ -12,13 +12,13 @@
   <meta property="og:url" content="https://selousowe.com/project.html">
   <meta property="og:site_name" content="Selou Sowe">
   <meta property="og:title" content="Reisetagebuch I — Selou Sowe">
-  <meta property="og:description" content="Reisetagebuch I by Selou Sowe — a 3922 km bicycle journey from Córdoba, Argentina to La Paz, Bolivia (2019). Essay and photographs published 2021.">
+  <meta property="og:description" content="Reisetagebuch I by Selou Sowe. A 3922 km bicycle journey from Córdoba, Argentina to La Paz, Bolivia (2019). Essay and photographs published 2021.">
   <meta property="og:image" content="https://selousowe.com/horse.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Reisetagebuch I — Selou Sowe">
-  <meta name="twitter:description" content="Reisetagebuch I by Selou Sowe — a 3922 km bicycle journey from Córdoba, Argentina to La Paz, Bolivia (2019). Essay and photographs published 2021.">
+  <meta name="twitter:description" content="Reisetagebuch I by Selou Sowe. A 3922 km bicycle journey from Córdoba, Argentina to La Paz, Bolivia (2019). Essay and photographs published 2021.">
   <meta name="twitter:image" content="https://selousowe.com/horse.jpg">
 
   <!-- Fonts -->
@@ -319,6 +319,29 @@
       nextBtn.addEventListener('click', () => { if (current < total - 1) { current++; update(); } });
 
       update();
+
+      // Cap all slide images to the rendered height of the first image
+      const firstImg = slides[0] && slides[0].querySelector('img');
+      if (firstImg) {
+        function applyHeightCap() {
+          const h = firstImg.offsetHeight;
+          if (h <= 0) return;
+          slides.forEach(slide => {
+            const img = slide.querySelector('img');
+            if (img) img.style.maxHeight = h + 'px';
+          });
+        }
+        if (firstImg.complete && firstImg.naturalHeight > 0) {
+          applyHeightCap();
+        } else {
+          firstImg.addEventListener('load', applyHeightCap);
+        }
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(applyHeightCap, 150);
+        });
+      }
     })();
   </script>
 

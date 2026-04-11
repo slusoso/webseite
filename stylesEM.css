@@ -298,7 +298,7 @@ img {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  width: 200px;
+  width: 20%;
   height: auto;
   pointer-events: none;
 }
@@ -314,7 +314,7 @@ img {
   .gif-float {
     position: static;
     order: -1;
-    width: 120px;
+    width: 25%;
     margin-bottom: 0.75rem;
   }
 }
@@ -360,7 +360,7 @@ img {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  width: 200px;
+  width: 20%;
   height: auto;
   max-height: none;
   object-fit: initial;
@@ -859,6 +859,7 @@ img {
   .slide-pair { grid-template-columns: 1fr; }
   .slide-pair .slide-figure img,
   .slide-solo .slide-figure img { height: auto; max-height: 50vh; width: 100%; }
+  .slider-label { display: none; }
 }
 
 /* TMDH image layouts */

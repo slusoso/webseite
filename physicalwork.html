@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Physical Work — Selou Sowe</title>
-  <meta name="description" content="Physical sculptures by Selou Sowe. Works include So Ends The Glorious World (solo show 2025), Madre de Dios (2023), Jörd (2021), Del Polvo Vienes (2020). Epoxy resin, galvanised steel, barbed wire, effect foil.">
+  <meta name="description" content="Physical sculptures by Selou Sowe. Works include So Ends The Glorious World (solo show 2025), Madre de Dios (2023), Jörd (2021), Del Polvo Vienes (2020).">
   <link rel="canonical" href="https://selousowe.com/physicalwork.html">
 
   <!-- Open Graph -->
@@ -13,6 +13,7 @@
   <meta property="og:site_name" content="Selou Sowe">
   <meta property="og:title" content="Physical Work — Selou Sowe">
   <meta property="og:description" content="Physical sculptures by Selou Sowe. Works include So Ends The Glorious World (solo show 2025), Madre de Dios (2023), Jörd (2021), Del Polvo Vienes (2020).">
+
   <meta property="og:image" content="https://selousowe.com/TMTDH%201.jpg">
 
   <!-- Twitter Card -->
@@ -440,14 +441,21 @@
   </main>
 
   <script>
-    // ── Click-to-expand ────────────────────────────────────────
+    // ── Click / Tap-to-expand ──────────────────────────────────
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const expandLabel = isTouch ? 'tap to expand' : 'click to expand';
+    const closeLabel  = isTouch ? 'tap to close'  : 'click to close';
+
     document.querySelectorAll('.work-cover').forEach(cover => {
+      // Set correct initial label
+      const label = cover.querySelector('.work-expand-label');
+      if (label) label.textContent = expandLabel;
+
       cover.addEventListener('click', () => {
         const section = cover.closest('.work-section');
         const isOpen = section.classList.toggle('is-open');
         cover.setAttribute('aria-expanded', isOpen);
-        const label = cover.querySelector('.work-expand-label');
-        if (label) label.textContent = isOpen ? 'click to close' : 'click to expand';
+        if (label) label.textContent = isOpen ? closeLabel : expandLabel;
       });
       cover.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cover.click(); }
@@ -483,14 +491,44 @@
     document.querySelectorAll('.sotgw-slider').forEach(slider => {
       const track = slider.querySelector('.slider-track');
       if (!track) return;
-      const slides = track.querySelectorAll('.slide');
       const prevBtn = slider.querySelector('.slider-prev');
       const nextBtn = slider.querySelector('.slider-next');
       const counter = slider.querySelector('.slider-counter');
-      const total = slides.length;
       let current = 0;
 
+      function isMobile() { return window.innerWidth < 640; }
+
+      // On narrow screens: split each slide-pair into two solo slides
+      function splitPairs() {
+        track.querySelectorAll('.slide-pair').forEach(pair => {
+          const figs = pair.querySelectorAll('.slide-figure');
+          if (figs.length < 2) return;
+          const newSlide = document.createElement('div');
+          newSlide.className = 'slide slide-solo slide-was-pair-b';
+          newSlide.appendChild(figs[1]);
+          pair.insertAdjacentElement('afterend', newSlide);
+          pair.className = 'slide slide-solo slide-was-pair-a';
+        });
+      }
+
+      // Restore split slides back into pairs
+      function restorePairs() {
+        track.querySelectorAll('.slide-was-pair-a').forEach(first => {
+          const next = first.nextElementSibling;
+          if (!next || !next.classList.contains('slide-was-pair-b')) return;
+          first.appendChild(next.querySelector('.slide-figure'));
+          next.remove();
+          first.className = 'slide slide-pair';
+        });
+      }
+
+      let wasMobile = isMobile();
+      if (wasMobile) splitPairs();
+
+      function getTotal() { return track.querySelectorAll('.slide').length; }
+
       function update() {
+        const total = getTotal();
         track.style.transform = `translateX(-${current * 100}%)`;
         counter.textContent = `${current + 1} / ${total}`;
         prevBtn.disabled = current === 0;
@@ -498,9 +536,21 @@
       }
 
       prevBtn.addEventListener('click', e => { e.stopPropagation(); if (current > 0) { current--; update(); } });
-      nextBtn.addEventListener('click', e => { e.stopPropagation(); if (current < total - 1) { current++; update(); } });
+      nextBtn.addEventListener('click', e => { e.stopPropagation(); if (current < getTotal() - 1) { current++; update(); } });
 
       update();
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          const mobile = isMobile();
+          if (mobile && !wasMobile) { current = 0; splitPairs(); }
+          else if (!mobile && wasMobile) { current = 0; restorePairs(); }
+          wasMobile = mobile;
+          update();
+        }, 150);
+      });
     });
   </script>
 
