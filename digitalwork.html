@@ -166,6 +166,7 @@
     });
 
     document.querySelectorAll('.work-close-btn').forEach(btn => {
+      btn.textContent = closeLabel;
       btn.addEventListener('click', () => {
         const section = btn.closest('.work-section');
         const nextSection = section.nextElementSibling;
